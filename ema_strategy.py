@@ -1,1 +1,0 @@
-# EMA strategy implementation here
