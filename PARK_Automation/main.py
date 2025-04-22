@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from modules.alerts.alert_currency_interest import run as run_currency_interest
 from modules.signals.alert_tech_indicator import run as run_tech_indicator
 from modules.ema.alert_ema_cross import run as run_ema_cross
