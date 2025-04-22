@@ -1,6 +1,10 @@
-import sys
+# main.py (최상위 디렉토리 실행 기준 - Railway 호환 완벽 버전)
+
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+import sys
+
+# 현재 디렉토리를 PYTHONPATH에 추가
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 from modules.alerts.alert_currency_interest import run as run_currency_interest
 from modules.signals.alert_tech_indicator import run as run_tech_indicator
