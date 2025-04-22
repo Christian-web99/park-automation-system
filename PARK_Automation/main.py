@@ -1,4 +1,4 @@
-import asyncio
+# main.py (최종 실전용 with 예외처리)
 
 from modules.alerts.alert_currency_interest import run as run_currency_interest
 from modules.signals.alert_tech_indicator import run as run_tech_indicator
@@ -28,41 +28,40 @@ from modules.economy.alert_pmi_release import run as run_pmi_release
 from modules.economy.alert_central_bank_trend import run as run_cb_trend
 from modules.sentiment.alert_market_sentiment import run as run_sentiment
 
-async def main():
-    await asyncio.gather(
-        asyncio.to_thread(run_currency_interest),
-        asyncio.to_thread(run_tech_indicator),
-        asyncio.to_thread(run_ema_cross),
-        asyncio.to_thread(run_ipo_alert),
-        asyncio.to_thread(run_fi_five_day),
-        asyncio.to_thread(run_weekly_options),
-        asyncio.to_thread(run_short_selling),
-        asyncio.to_thread(run_kospi200_futures),
-        asyncio.to_thread(run_us_option_summary),
-        asyncio.to_thread(run_blackrock_holdings),
-        asyncio.to_thread(run_etf_signals),
-        asyncio.to_thread(run_influential_speech),
-        asyncio.to_thread(run_economic_calendar),
-        asyncio.to_thread(run_global_crisis),
-        asyncio.to_thread(run_commodities),
-        asyncio.to_thread(run_earnings_report),
-        asyncio.to_thread(run_rate_futures),
-        asyncio.to_thread(run_vix_alert),
-        asyncio.to_thread(run_forex_flow),
-        asyncio.to_thread(run_gdp_release),
-        asyncio.to_thread(run_yield_curve),
-        asyncio.to_thread(run_cds_spike),
-        asyncio.to_thread(run_research_summary),
-        asyncio.to_thread(run_policy_announcement),
-        asyncio.to_thread(run_pmi_release),
-        asyncio.to_thread(run_cb_trend),
-        asyncio.to_thread(run_sentiment),
-    )
 
-if __name__ == "__main__":
+def safe_run(name, func):
     try:
-        asyncio.run(main())
+        print(f"✅ Running {name}...")
+        func()
     except Exception as e:
-        import traceback
-        print("\n🚨 CRITICAL ERROR 발생:", e)
-        traceback.print_exc()
+        print(f"❌ Error in {name}: {e}")
+
+
+# 안전하게 실행
+safe_run("Currency & Interest", run_currency_interest)
+safe_run("Technical Indicator", run_tech_indicator)
+safe_run("EMA Cross", run_ema_cross)
+safe_run("IPO Alert", run_ipo_alert)
+safe_run("FI 5-Day Flow", run_fi_five_day)
+safe_run("Weekly Options", run_weekly_options)
+safe_run("Short Selling", run_short_selling)
+safe_run("KOSPI200 Futures", run_kospi200_futures)
+safe_run("US Option Summary", run_us_option_summary)
+safe_run("BlackRock Holdings", run_blackrock_holdings)
+safe_run("ETF Signals", run_etf_signals)
+safe_run("Influential Speech", run_influential_speech)
+safe_run("Economic Calendar", run_economic_calendar)
+safe_run("Global Crisis", run_global_crisis)
+safe_run("Commodities", run_commodities)
+safe_run("Earnings Report", run_earnings_report)
+safe_run("Rate Futures", run_rate_futures)
+safe_run("VIX Alert", run_vix_alert)
+safe_run("Forex Flow", run_forex_flow)
+safe_run("GDP Release", run_gdp_release)
+safe_run("Yield Curve", run_yield_curve)
+safe_run("CDS Spike", run_cds_spike)
+safe_run("Research Summary", run_research_summary)
+safe_run("Policy Announcement", run_policy_announcement)
+safe_run("PMI Release", run_pmi_release)
+safe_run("Central Bank Trend", run_cb_trend)
+safe_run("Market Sentiment", run_sentiment)
