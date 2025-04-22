@@ -1,4 +1,4 @@
-# main.py (완전 실전용)
+import asyncio
 
 from modules.alerts.alert_currency_interest import run as run_currency_interest
 from modules.signals.alert_tech_indicator import run as run_tech_indicator
@@ -28,31 +28,41 @@ from modules.economy.alert_pmi_release import run as run_pmi_release
 from modules.economy.alert_central_bank_trend import run as run_cb_trend
 from modules.sentiment.alert_market_sentiment import run as run_sentiment
 
-# 알림 실행
-run_currency_interest()
-run_tech_indicator()
-run_ema_cross()
-run_ipo_alert()  # 기본값 daily=False → 실시간용
-run_fi_five_day()
-run_weekly_options()
-run_short_selling()
-run_kospi200_futures()
-run_us_option_summary()
-run_blackrock_holdings()
-run_etf_signals()
-run_influential_speech()
-run_economic_calendar()
-run_global_crisis()
-run_commodities()
-run_earnings_report()
-run_rate_futures()
-run_vix_alert()
-run_forex_flow()
-run_gdp_release()
-run_yield_curve()
-run_cds_spike()
-run_research_summary()
-run_policy_announcement()
-run_pmi_release()
-run_cb_trend()
-run_sentiment()
+async def main():
+    await asyncio.gather(
+        asyncio.to_thread(run_currency_interest),
+        asyncio.to_thread(run_tech_indicator),
+        asyncio.to_thread(run_ema_cross),
+        asyncio.to_thread(run_ipo_alert),
+        asyncio.to_thread(run_fi_five_day),
+        asyncio.to_thread(run_weekly_options),
+        asyncio.to_thread(run_short_selling),
+        asyncio.to_thread(run_kospi200_futures),
+        asyncio.to_thread(run_us_option_summary),
+        asyncio.to_thread(run_blackrock_holdings),
+        asyncio.to_thread(run_etf_signals),
+        asyncio.to_thread(run_influential_speech),
+        asyncio.to_thread(run_economic_calendar),
+        asyncio.to_thread(run_global_crisis),
+        asyncio.to_thread(run_commodities),
+        asyncio.to_thread(run_earnings_report),
+        asyncio.to_thread(run_rate_futures),
+        asyncio.to_thread(run_vix_alert),
+        asyncio.to_thread(run_forex_flow),
+        asyncio.to_thread(run_gdp_release),
+        asyncio.to_thread(run_yield_curve),
+        asyncio.to_thread(run_cds_spike),
+        asyncio.to_thread(run_research_summary),
+        asyncio.to_thread(run_policy_announcement),
+        asyncio.to_thread(run_pmi_release),
+        asyncio.to_thread(run_cb_trend),
+        asyncio.to_thread(run_sentiment),
+    )
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        import traceback
+        print("\n🚨 CRITICAL ERROR 발생:", e)
+        traceback.print_exc()
