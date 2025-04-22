@@ -13,7 +13,7 @@ openpyxl
 # Telegram Bot
 python-telegram-bot
 
-# Yahoo Finance, Investing, CoinMarketCap 등
+# 금융 데이터 수집
 yfinance
 pandas_datareader
 ccxt
@@ -26,32 +26,32 @@ feedparser
 newspaper3k
 tweepy
 
-# 텍스트 처리 및 알림 분석
+# 텍스트 처리
 nltk
 regex
 
 # DART API
 dart-fss
 
-# 금융지표 분석 및 시간대 관리
+# 금융지표 분석 및 시간대
 scipy
 statsmodels
 pytz
-zoneinfo; python_version
+# zoneinfo → Python 3.9 이상 내장. 제거함
 
-# 크롤링 & 헤드리스 브라우저
+# 크롤링 및 브라우저 자동화
 selenium
 webdriver-manager
 
-# 기타 백엔드 유틸
+# 유틸리티
 pyyaml
 tenacity
 
-# 주기 실행용 백그라운드 실행 스케줄러
+# 스케줄러
 apscheduler
 
-# 머신러닝 추후 확장용
+# 머신러닝 확장용
 scikit-learn
 
-# 암호화폐 실시간 가격 요청용 Websocket (선택)
+# 실시간 암호화폐 WebSocket
 websocket-client
