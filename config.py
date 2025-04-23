@@ -18,7 +18,6 @@ OKX_SECRET_KEY = "F4B34C9E2F56777DCC2897A5C3DB2CD3"
 OKX_PASSPHRASE = "Qwerty123$"
 OPENWEATHER_API_KEY = "71b684f7898a1659f2ed38fcdfda36ed"
 
-
 # ✅ 기술적 분석용 종목 리스트
 KOSPI_TOP_50 = [
     "005930", "000660", "035420", "207940", "051910", "068270", "028260", "005935", "012330", "055550",
@@ -38,6 +37,17 @@ KOSDAQ_TOP_50 = [
 
 CRYPTO_TOP_10 = [
     "BTC/USDT", "ETH/USDT", "XRP/USDT", "SOL/USDT", "BNB/USDT", "DOGE/USDT", "ADA/USDT", "AVAX/USDT", "DOT/USDT", "TRX/USDT"
+]
+
+# ✅ alias (모든 모듈에서 이 이름으로 불러옵니다)
+KOSPI50_TICKERS = KOSPI_TOP_50
+KOSDAQ50_TICKERS = KOSDAQ_TOP_50
+CRYPTO_TICKERS = CRYPTO_TOP_10
+
+# ✅ 주요 테마 ETF 티커 리스트 (기술적/수급 분석용)
+ETF_THEME_TICKERS = [
+    "TIGER AI코리아", "KODEX 2차전지산업", "TIGER 반도체", "KODEX 반도체", "TIGER 미국S&P500", "KODEX 미국나스닥100",
+    "TIGER 미국필라델피아반도체", "KODEX 미국S&P에너지", "TIGER MSCI리튬&배터리", "TIGER 미국테크TOP10 INDXX"
 ]
 
 # ✅ 감시 대상 인물 (상하원 의원 제외 전 세계 영향력자 포함)
@@ -130,6 +140,17 @@ KEY_PEOPLE = {
     "rogoff": "@krogoff"
 }
 
+# ✅ KEY_PEOPLE에서 시간 단위 요약 감시할 대상
+KEY_PEOPLE_HOURLY = [
+    "warren_buffett", "ray_dalio", "stanley_druckenmiller", "larry_summers", "shiller",
+    "worldbank", "vanguard", "boj", "pboC", "bank_of_korea", "saudi_energy", "uae_energy"
+]
+    # ✅ KEY_PEOPLE에서 실시간 감시할 대상 (예: 트위터 알림 대상)
+KEY_PEOPLE_REALTIME = [
+    "elon_musk", "jeff_bezos", "bill_ackman", "michael_burry", "janet_yellen", "jerome_powell",
+    "christine_lagarde", "blackrock", "goldman_sachs", "imf", "cnbc", "bloomberg"
+]
+
 # ✅ 실시간 감지 키워드
 REALTIME_KEYWORDS = [
     "전쟁", "계엄", "테러", "대재난", "금융위기", "시장 붕괴", 
@@ -142,3 +163,6 @@ INTERVALS = {
     "realtime_check": 300,       # 5분 주기
     "critical_realtime": 60      # 초실시간 감시 (60초)
 }
+
+# ✅ 기타 경로
+IPO_CSV_PATH = "Data/data:ipo_master_list.csv"
