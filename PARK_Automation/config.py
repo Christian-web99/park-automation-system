@@ -37,7 +37,7 @@ KOSDAQ_TOP_50 = [
 ]
 
 CRYPTO_TOP_10 = [
-    "BTC", "ETH", "XRP", "SOL", "BNB", "DOGE", "ADA", "AVAX", "DOT", "TRX"
+    "BTC/USDT", "ETH/USDT", "XRP/USDT", "SOL/USDT", "BNB/USDT", "DOGE/USDT", "ADA/USDT", "AVAX/USDT", "DOT/USDT", "TRX/USDT"
 ]
 
 # ✅ 감시 대상 인물 (상하원 의원 제외 전 세계 영향력자 포함)
