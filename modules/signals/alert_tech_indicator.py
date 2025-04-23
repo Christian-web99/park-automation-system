@@ -2,17 +2,31 @@
 
 import pandas as pd
 import yfinance as yf
+import warnings
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from telegram_handler import send_telegram_message
-
 from config import KOSPI_TOP_50, KOSDAQ_TOP_50, CRYPTO_TOP_10
+
+def get_yf_ticker(ticker):
+    if ticker in KOSPI_TOP_50:
+        return f"{ticker}.KS"
+    elif ticker in KOSDAQ_TOP_50:
+        return f"{ticker}.KQ"
+    return ticker
 
 def fetch_price_data(ticker, interval="1d", period="90d"):
     try:
-        df = yf.download(ticker, interval=interval, period=period, progress=False)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            df = yf.download(ticker, interval=interval, period=period, progress=False)
+
+        if df is None or df.empty:
+            raise ValueError("No data")
         return df
-    except:
+
+    except Exception as e:
+        print(f"[⚠️] 다운로드 실패: {ticker} → {e}")
         return None
 
 def calculate_stochastic(df, k_period, d_period, smooth_k):
@@ -31,8 +45,9 @@ def calculate_bollinger(df, window=20):
     return upper, lower
 
 def analyze_indicator(ticker):
-    daily = fetch_price_data(ticker, interval="1d", period="90d")
-    weekly = fetch_price_data(ticker, interval="1wk", period="2y")
+    yf_ticker = get_yf_ticker(ticker)
+    daily = fetch_price_data(yf_ticker, interval="1d", period="90d")
+    weekly = fetch_price_data(yf_ticker, interval="1wk", period="2y")
 
     if daily is None or len(daily) < 60 or weekly is None or len(weekly) < 30:
         return None
@@ -64,6 +79,7 @@ def analyze_indicator(ticker):
     st_k1_w, st_d1_w = calculate_stochastic(weekly, 5, 3, 3)
     last_k_w = st_k1_w.iloc[-1]
     last_d_w = st_d1_w.iloc[-1]
+
     weekly_signal = None
     if last_k_w > 80 and last_d_w > 80:
         weekly_signal = "📈 주봉 과매수"
@@ -90,15 +106,15 @@ def run(daily=False):
 
     if triggered:
         message = f"""[PARK 시스템 – 2번 항목]
-📊 <b>보조지표 기반 시그널 감지</b> ({now})
+📊 <b>보조지표 기반 시킵 감지</b> ({now})
 
 • 조건 충족 종목 ({len(triggered)}개):
 {chr(10).join(triggered)}
 
 ✅ 기준:
-- 일봉: Stochastic(5,3,3) AND (10,6,6) OR 볼린저밴드
+- 일봉: Stochastic(5,3,3) AND (10,6,6) OR 볼린저방드
 - 주봉: Stochastic(5,3,3)
-- 주기: 5분 실시간 + 오전 7시 요약
+- 주기: 5분 실시간 + 오전 7시 요조
 """
         send_telegram_message(message)
     elif daily:
