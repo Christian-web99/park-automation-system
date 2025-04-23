@@ -1,11 +1,14 @@
 # main.py (최상위 디렉토리 실행 기준 - Railway 호환 완벽 버전)
+print("✅ main.py started")
 
 import os
 import sys
 
 # 현재 디렉토리를 PYTHONPATH에 추가
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
 
+# 모듈 임포트
 from modules.alerts.alert_currency_interest import run as run_currency_interest
 from modules.signals.alert_tech_indicator import run as run_tech_indicator
 from modules.ema.alert_ema_cross import run as run_ema_cross
@@ -37,37 +40,42 @@ from modules.sentiment.alert_market_sentiment import run as run_sentiment
 
 def safe_run(name, func):
     try:
-        print(f"✅ Running {name}...")
+        print(f"▶️ Running {name}...")
         func()
+        print(f"✅ {name} completed successfully.\n")
     except Exception as e:
-        print(f"❌ Error in {name}: {e}")
+        print(f"❌ Error in {name}: {e}\n")
 
 
-# 안전하게 실행
-safe_run("Currency & Interest", run_currency_interest)
-safe_run("Technical Indicator", run_tech_indicator)
-safe_run("EMA Cross", run_ema_cross)
-safe_run("IPO Alert", run_ipo_alert)
-safe_run("FI 5-Day Flow", run_fi_five_day)
-safe_run("Weekly Options", run_weekly_options)
-safe_run("Short Selling", run_short_selling)
-safe_run("KOSPI200 Futures", run_kospi200_futures)
-safe_run("US Option Summary", run_us_option_summary)
-safe_run("BlackRock Holdings", run_blackrock_holdings)
-safe_run("ETF Signals", run_etf_signals)
-safe_run("Influential Speech", run_influential_speech)
-safe_run("Economic Calendar", run_economic_calendar)
-safe_run("Global Crisis", run_global_crisis)
-safe_run("Commodities", run_commodities)
-safe_run("Earnings Report", run_earnings_report)
-safe_run("Rate Futures", run_rate_futures)
-safe_run("VIX Alert", run_vix_alert)
-safe_run("Forex Flow", run_forex_flow)
-safe_run("GDP Release", run_gdp_release)
-safe_run("Yield Curve", run_yield_curve)
-safe_run("CDS Spike", run_cds_spike)
-safe_run("Research Summary", run_research_summary)
-safe_run("Policy Announcement", run_policy_announcement)
-safe_run("PMI Release", run_pmi_release)
-safe_run("Central Bank Trend", run_cb_trend)
-safe_run("Market Sentiment", run_sentiment)
+if __name__ == "__main__":
+    print("🚀 Launching PARK Automation Modules...\n")
+
+    safe_run("Currency & Interest", run_currency_interest)
+    safe_run("Technical Indicator", run_tech_indicator)
+    safe_run("EMA Cross", run_ema_cross)
+    safe_run("IPO Alert", run_ipo_alert)
+    safe_run("FI 5-Day Flow", run_fi_five_day)
+    safe_run("Weekly Options", run_weekly_options)
+    safe_run("Short Selling", run_short_selling)
+    safe_run("KOSPI200 Futures", run_kospi200_futures)
+    safe_run("US Option Summary", run_us_option_summary)
+    safe_run("BlackRock Holdings", run_blackrock_holdings)
+    safe_run("ETF Signals", run_etf_signals)
+    safe_run("Influential Speech", run_influential_speech)
+    safe_run("Economic Calendar", run_economic_calendar)
+    safe_run("Global Crisis", run_global_crisis)
+    safe_run("Commodities", run_commodities)
+    safe_run("Earnings Report", run_earnings_report)
+    safe_run("Rate Futures", run_rate_futures)
+    safe_run("VIX Alert", run_vix_alert)
+    safe_run("Forex Flow", run_forex_flow)
+    safe_run("GDP Release", run_gdp_release)
+    safe_run("Yield Curve", run_yield_curve)
+    safe_run("CDS Spike", run_cds_spike)
+    safe_run("Research Summary", run_research_summary)
+    safe_run("Policy Announcement", run_policy_announcement)
+    safe_run("PMI Release", run_pmi_release)
+    safe_run("Central Bank Trend", run_cb_trend)
+    safe_run("Market Sentiment", run_sentiment)
+
+    print("🏁 All modules executed.")
