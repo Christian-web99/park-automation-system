@@ -2,7 +2,7 @@
 
 import requests
 from config import (
-    FRED_API_KEY
+    FRED_API_KEY,
     ALPHA_VANTAGE_API_KEY,
     COINMARKETCAP_API_KEY,
     NEWS_API_KEY,
@@ -75,7 +75,7 @@ def get_btc_price():
 
 ### 8. KOSPI200 야간선물 등락률 (RapidAPI 필요 or 수동)
 def get_kospi200_futures_change():
-    return "+0.42%"  # 향후 연동 가능 (ex. Kiwoom API, Investing 등)
+    return "+0.42%"  # 향후 연동 가능
 
 ### 9. VIX 지수
 def get_vix_index():
@@ -104,12 +104,12 @@ def get_weather(city="Seoul"):
 
 ### 11. BTC ETF 순유입/순유출 (수동 요약 또는 프리미엄 데이터)
 def get_btc_etf_flow():
-    return "2,000억 순유입"  # 향후 크롤링 자동화 가능
+    return "2,000억 순유입"
 
-### 12. CNN Fear & Greed Index (웹스크래핑 필요)
+### 12. CNN Fear & Greed Index
 def get_cnn_fgi_index():
-    return {"score": 82, "label": "Extreme Greed"}  # 크롤링 대체 가능
+    return {"score": 82, "label": "Extreme Greed"}
 
 ### 13. Korea Fear & Greed Index
 def get_korea_fgi_index():
-    return {"score": 65, "label": "Greed"}  # 향후 구현 가능
+    return {"score": 65, "label": "Greed"}
