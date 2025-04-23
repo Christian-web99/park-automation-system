@@ -80,7 +80,7 @@ KEY_PEOPLE = {
 
     # 미국 정치 및 중앙은행
     "Donald Trump": "@realDonaldTrump",
-    "Scott Bessent": "@SecScottBessent"
+    "Scott Bessent": "@SecScottBessent",
     "janet_yellen": "@SecYellen",
     "neel_kashkari": "@neelkashkari",
     "jerome_powell": "@federalreserve",
