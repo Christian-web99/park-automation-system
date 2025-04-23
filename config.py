@@ -157,6 +157,9 @@ REALTIME_KEYWORDS = [
     "긴급 발표", "긴급 회의", "원유 공급 중단", "전염병", "북한 핵", "북한 미사일", "아포칼립스", "이상기후", "비상사태", "금융 시스템 위기", "대지진"
 ]
 
+# config.py 맨 하단쯤에 추가해줘
+CRISIS_KEYWORDS = REALTIME_KEYWORDS
+
 # ✅ 주기 설정 (초 단위)
 INTERVALS = {
     "7am_summary": 86400,        # 매일 오전 7시
