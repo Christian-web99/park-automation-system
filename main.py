@@ -5,9 +5,11 @@ print("✅ 모든 설정 정상 작동 중 - 테스트 로그 출력")
 import os
 import sys
 
-# 현재 디렉토리를 PYTHONPATH에 추가
+# ✅ 핵심: PYTHONPATH에 현재 디렉토리 + 하위 모듈 경로 추가
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
+sys.path.append(os.path.join(BASE_DIR, "modules"))
+sys.path.append(os.path.join(BASE_DIR, "services"))
 
 # 모듈 임포트
 from modules.alerts.alert_currency_interest import run as run_currency_interest
