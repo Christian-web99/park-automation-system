@@ -6,7 +6,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from telegram_handler import send_telegram_message
 
-from config import KOSPI50_TICKERS, KOSDAQ50_TICKERS, CRYPTO_TICKERS
+from config import KOSPI_TOP_50, KOSDAQ_TOP_50, CRYPTO_TOP_10
 
 def fetch_price_data(ticker, interval="1d", period="90d"):
     try:
@@ -80,7 +80,7 @@ def analyze_indicator(ticker):
 
 def run(daily=False):
     now = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M")
-    targets = KOSPI50_TICKERS + KOSDAQ50_TICKERS + CRYPTO_TICKERS
+    targets = KOSPI_TOP_50 + KOSDAQ_TOP_50 + CRYPTO_TOP_10
     triggered = []
 
     for ticker in targets:
