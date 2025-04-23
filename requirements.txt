@@ -1,5 +1,5 @@
 # 필수 시스템 라이브러리
-pandas
+pandas>=1.5.3
 numpy
 requests
 aiohttp
@@ -11,15 +11,15 @@ python-dateutil
 openpyxl
 
 # Telegram Bot
-python-telegram-bot
+python-telegram-bot>=20.3
 
 # 금융 데이터 수집
-yfinance
+yfinance>=0.2.18
 pandas_datareader
 ccxt
 pykrx
 investpy
-html5lib
+dart-fss
 
 # 뉴스/트윗 처리
 feedparser
@@ -30,17 +30,13 @@ tweepy
 nltk
 regex
 
-# DART API
-dart-fss
-
 # 금융지표 분석 및 시간대
 scipy
 statsmodels
 pytz
-# zoneinfo → Python 3.9 이상 내장. 제거함
 
 # 크롤링 및 브라우저 자동화
-selenium
+selenium>=4.10.0
 webdriver-manager
 
 # 유틸리티

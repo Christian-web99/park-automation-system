@@ -1,4 +1,4 @@
-# main.py (최상위 디렉토리 실행 기준 - Railway 호환 완벽 버전)
+# main.py (최상위 디렉토리 실행 기준 - Railway 완전 실전용)
 print("✅ main.py started")
 print("✅ 모든 설정 정상 작동 중 - 테스트 로그 출력")
 
@@ -29,7 +29,7 @@ from modules.crisis.alert_global_crisis import run as run_global_crisis
 from modules.macro.alert_commodities import run as run_commodities
 from modules.macro.alert_earnings_report import run as run_earnings_report
 from modules.macro.alert_rate_futures import run as run_rate_futures
-from modules.macro.alert_vix_volatility import run as run_vix_alert
+from modules.economy.alert_vix_volatility import run as run_vix_alert
 from modules.macro.alert_forex_flow import run as run_forex_flow
 from modules.economy.alert_gdp_release import run as run_gdp_release
 from modules.economy.alert_yield_curve_inversion import run as run_yield_curve
@@ -43,12 +43,11 @@ from modules.sentiment.alert_market_sentiment import run as run_sentiment
 
 def safe_run(name, func):
     try:
-        print(f"▶️ Running {name}...")
+        print(f"\n▶️ Running {name}...")
         func()
-        print(f"✅ {name} completed successfully.\n")
+        print(f"✅ {name} completed successfully.")
     except Exception as e:
-        print(f"❌ Error in {name}: {e}\n")
-
+        print(f"❌ Error in {name}: {e}")
 
 if __name__ == "__main__":
     print("🚀 Launching PARK Automation Modules...\n")
@@ -81,4 +80,5 @@ if __name__ == "__main__":
     safe_run("Central Bank Trend", run_cb_trend)
     safe_run("Market Sentiment", run_sentiment)
 
-    print("🏁 All modules executed.")
+    print("\n🌟 평가: All modules executed.")
+    sys.exit(0)  # ✅ Railway에 정상 종료 명시
