@@ -15,7 +15,7 @@ def fetch_recent_ipos():
     print("[📡] DART 신규상장 공시 수집 중...")
     df = fetch_dart_ipos()
 
-    if df.empty:
+    if df is None or df.empty:
         print("[🚫] 신규상장 공시 없음 또는 API 오류")
         return []
 
