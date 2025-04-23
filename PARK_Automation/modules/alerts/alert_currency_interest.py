@@ -9,7 +9,7 @@ from telegram_handler import send_telegram_message
 from services.fetch_market_data import (
     get_usdkrw_exchange_rate,
     get_bond_yields,
-    get_btc_price_from_okx
+    get_btc_price  # ✅ 함수명 수정됨
 )
 
 def get_fred_series_latest(series_id):
@@ -33,7 +33,7 @@ def run(daily=False):
 
     usdkrw = get_usdkrw_exchange_rate()
     us_yield, kr_yield = get_bond_yields()
-    btc = get_btc_price_from_okx()
+    btc = get_btc_price()  # ✅ 함수명 수정됨
 
     us_base = get_fred_series_latest("DFEDTARU")
     kr_base = get_fred_series_latest("INTDSRKRM193N")
