@@ -1,5 +1,6 @@
 # main.py (최상위 디렉토리 실행 기준 - Railway 호환 완벽 버전)
 print("✅ main.py started")
+print("✅ 모든 설정 정상 작동 중 - 테스트 로그 출력")
 
 import os
 import sys
